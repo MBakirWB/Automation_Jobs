@@ -1,0 +1,30 @@
+name: Data PR
+
+on:
+  repository_dispatch:
+    types:
+      - webhook
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: 📌 Setup runtime
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+    - name: 📌 Checkout repo
+      uses: actions/checkout@v2
+    - name: 📌 Create issue
+      uses: JasonEtco/create-an-issue@v2
+      env:
+        GITHUB_TOKEN: ${{ secrets.ACTION_PAT }}
+        AUTHOR: ${{ github.event.client_payload.event_author }}
+        ART_VERSION: ${{ github.event.client_payload.artifact_version }}
+        ART_VERSION_STR: ${{ github.event.client_payload.artifact_version_string }}
+        ART_COLLECTION: ${{ github.event.client_payload.artifact_collection_name }}
+        PROJECT_NAME: ${{ github.event.client_payload.project_name }}
+        ENTITY_NAME: ${{ github.event.client_payload.entity_name }}
+      with:
+        filename: .github/DATA_PR_TEMPLATE.md
