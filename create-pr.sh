@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 # Check if an argument is provided
 if [ -z "$1" ]; then
   echo "No argument provided."
