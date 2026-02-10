@@ -1,4 +1,4 @@
-name: Data PR
+name: Model Promotion CI/CD
 
 on:
   repository_dispatch:
@@ -6,17 +6,13 @@ on:
       - webhook
 
 jobs:
-  build:
+  create-review-issue:
     runs-on: ubuntu-latest
 
     steps:
-    - name: 📌 Setup runtime
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.9'
-    - name: 📌 Checkout repo
-      uses: actions/checkout@v2
-    - name: 📌 Create issue
+    - name: Checkout repo
+      uses: actions/checkout@v4
+    - name: Create review issue
       uses: JasonEtco/create-an-issue@v2
       env:
         GITHUB_TOKEN: ${{ secrets.ACTION_PAT }}
