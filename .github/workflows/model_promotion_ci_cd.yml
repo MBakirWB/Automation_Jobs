@@ -23,4 +23,4 @@ jobs:
         PROJECT_NAME: ${{ github.event.client_payload.project_name }}
         ENTITY_NAME: ${{ github.event.client_payload.entity_name }}
       with:
-        filename: .github/DATA_PR_TEMPLATE.md
+        filename: .github/model_promotion_ci_cd.yml
