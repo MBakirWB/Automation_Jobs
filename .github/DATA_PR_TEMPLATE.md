@@ -1,5 +1,5 @@
 ---
-title: Data merge request for {{ env.ART_COLLECTION }}
+title: Model Promotion for {{ env.ART_COLLECTION }}
 assignees: MBakirWB
 labels: data
 ---
